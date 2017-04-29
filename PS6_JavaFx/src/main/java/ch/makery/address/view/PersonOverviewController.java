@@ -12,6 +12,7 @@ import java.util.UUID;
 import base.PersonDAL;
 import ch.makery.address.MainApp;
 import ch.makery.address.model.Person;
+import domain.PersonDomainModel;
 
 
 public class PersonOverviewController {
@@ -142,7 +143,16 @@ public class PersonOverviewController {
         boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
         if (okClicked) {
         	//PS6 - Calling the addPerson method
-        	//TODO: Call Add Person in PersonDAL        	
+        	PersonDomainModel per = new PersonDomainModel();
+        	
+        	per.setFirstName(tempPerson.getFirstName());
+        	per.setBirthday(tempPerson.getBirthday());
+        	per.setLastName(tempPerson.getLastName());
+        	per.setStreet(tempPerson.getStreet());
+        	per.setPostalCode(tempPerson.getPostalCode());
+        	per.setCity(tempPerson.getCity());
+        	
+        	PersonDAL.addPerson(tempPerson);
             mainApp.getPersonData().add(tempPerson);
         }
     }
@@ -159,7 +169,16 @@ public class PersonOverviewController {
             if (okClicked) {
             	
             	//PS6 - Calling the updatePerson method
-            	//TODO: Call Update Person in PersonDAL 
+            	PersonDomainModel updatePer = new PersonDomainModel();            	
+
+            	updatePer.setFirstName(selectedPerson.getFirstName());
+            	updatePer.setBirthday(selectedPerson.getBirthday());
+            	updatePer.setLastName(selectedPerson.getLastName());
+            	updatePer.setStreet(selectedPerson.getStreet());
+            	updatePer.setPostalCode(selectedPerson.getPostalCode());
+            	updatePer.setCity(selectedPerson.getCity());
+
+            	PersonDAL.updatePerson(selectedPerson);
                 showPersonDetails(selectedPerson);
             }
 
