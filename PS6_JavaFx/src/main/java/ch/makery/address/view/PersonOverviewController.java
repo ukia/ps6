@@ -113,7 +113,8 @@ public class PersonOverviewController {
         	//		Figure out the value of perID
         	
         	UUID perID = UUID.fromString("1234");        	
-        	//TODO: Call Delete Person in PersonDAL 
+        	
+        	PersonDAL.deletePerson(perID);
         	
         	
             personTable.getItems().remove(selectedIndex);
