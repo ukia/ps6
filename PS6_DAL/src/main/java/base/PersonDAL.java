@@ -17,6 +17,7 @@ import util.HibernateUtil;
 public class PersonDAL {
 
 	public static PersonDomainModel addPerson(PersonDomainModel per) {
+		//PS6 - please implement
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 		int employeeID = 0;
@@ -34,8 +35,8 @@ public class PersonDAL {
 		return per;
 	}
 
-	
 	public static ArrayList<PersonDomainModel> getPersons() {
+		//PS6 - please implement		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 		PersonDomainModel perGet = null;		
@@ -60,10 +61,11 @@ public class PersonDAL {
 			session.close();
 		}
 		return pers;
-	}		
-	
-	
+
+	}
+
 	public static PersonDomainModel getPerson(UUID perID) {
+		//PS6 - please implement		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 		PersonDomainModel perGet = null;		
@@ -86,12 +88,13 @@ public class PersonDAL {
 			session.close();
 		}
 		return perGet;
-	}		
+	}
 
 	public static void deletePerson(UUID perID) {
+		//PS6 - please implement
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
-		PersonDomainModel perGet = null;		
+		StudentDomainModel perGet = null;		
 		
 		try {
 			tx = session.beginTransaction();	
@@ -108,9 +111,10 @@ public class PersonDAL {
 		} finally {
 			session.close();
 		}
+	}
 
-	}	
 	public static PersonDomainModel updatePerson(PersonDomainModel per) {
+		//PS6 - please implement		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 		StudentDomainModel perGet = null;		
@@ -131,5 +135,5 @@ public class PersonDAL {
 		}
 
 		return per;
-	}		
+	}
 }

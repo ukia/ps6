@@ -17,53 +17,41 @@ import domain.PersonDomainModel;
 
 public class Person_Test {
 
-	private static PersonDomainModel person1;
+	private static PersonDomainModel personp;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		Date person1Birth = null;
+	
+		personp = new PersonDomainModel();
 		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-		
-		person1 = new PersonDomainModel();
-		
-		try{
-			person1Birth = dateFormat.parse("1990-10-10");
-		}
-		catch (ParseException e) {
-			
-			e.printStackTrace();
-		}
-		
-		person1.setFirstName("Wide");
-		person1.setLastName("Stone");
-		person1.setCity("Secret");
-		person1.setPostalCode(43656);
-		person1.setStreet("668 east street");
+		personp.setFirstName("Jack");
+		personp.setLastName("Lee");
+		personp.setCity("Newark");
+		personp.setPostalCode(12345);
+		personp.setStreet("1 Main street");
 		
 	}
 	
 	@Test
 	public void AddPersonTest(){
-		PersonDAL.addPerson(person1);
+		PersonDAL.addPerson(personp);
 	}
 	
 	@Test
 	public void GetPersonTest(){
-		String LastName = person1.getLastName();
-		assertEquals("Stone",LastName);
+		String LastName = personp.getLastName();
+		assertEquals("Lee",LastName);
 	}
 	
 	@Test
 	public void UpdatePersonTest(){
-		person1.setFirstName("Wide");
-		
-		PersonDAL.updatePerson(person1);
+		personp.setFirstName("Lee");
+		PersonDAL.updatePerson(personp);
 	}
 	
 	@Test
 	public void deletePersontest(){
-		PersonDAL.addPerson(person1);
+		PersonDAL.addPerson(personp);
 	}
 
 

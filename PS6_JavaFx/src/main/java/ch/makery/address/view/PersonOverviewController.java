@@ -114,9 +114,8 @@ public class PersonOverviewController {
         	//		Figure out the value of perID
         	
         	UUID perID = UUID.fromString("1234");        	
-        	
+        	//TODO: Call Delete Person in PersonDAL 
         	PersonDAL.deletePerson(perID);
-        	
         	
             personTable.getItems().remove(selectedIndex);
             
@@ -143,16 +142,15 @@ public class PersonOverviewController {
         boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
         if (okClicked) {
         	//PS6 - Calling the addPerson method
-        	PersonDomainModel per = new PersonDomainModel();
-        	
-        	per.setFirstName(tempPerson.getFirstName());
-        	per.setBirthday(tempPerson.getBirthday());
-        	per.setLastName(tempPerson.getLastName());
-        	per.setStreet(tempPerson.getStreet());
-        	per.setPostalCode(tempPerson.getPostalCode());
-        	per.setCity(tempPerson.getCity());
-        	
-        	PersonDAL.addPerson(tempPerson);
+        	PersonDomainModel updatePer = new PersonDomainModel();
+
+        	updatePer.setFirstName(tempPerson.getFirstName());
+        	updatePer.setBirthday(tempPerson.getBirthday());
+        	updatePer.setLastName(tempPerson.getLastName());
+        	updatePer.setStreet(tempPerson.getStreet());
+        	updatePer.setPostalCode(tempPerson.getPostalCode());
+        	updatePer.setCity(tempPerson.getCity());
+            showPersonDetails(tempPerson);        	
             mainApp.getPersonData().add(tempPerson);
         }
     }
@@ -169,16 +167,14 @@ public class PersonOverviewController {
             if (okClicked) {
             	
             	//PS6 - Calling the updatePerson method
-            	PersonDomainModel updatePer = new PersonDomainModel();            	
-
+            	PersonDomainModel updatePer = new PersonDomainModel();
+            	//TODO: Call Update Person in PersonDAL 
             	updatePer.setFirstName(selectedPerson.getFirstName());
             	updatePer.setBirthday(selectedPerson.getBirthday());
             	updatePer.setLastName(selectedPerson.getLastName());
             	updatePer.setStreet(selectedPerson.getStreet());
             	updatePer.setPostalCode(selectedPerson.getPostalCode());
             	updatePer.setCity(selectedPerson.getCity());
-
-            	PersonDAL.updatePerson(selectedPerson);
                 showPersonDetails(selectedPerson);
             }
 
