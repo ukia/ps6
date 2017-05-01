@@ -94,7 +94,7 @@ public class PersonDAL {
 		//PS6 - please implement
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
-		StudentDomainModel perGet = null;		
+		PersonDomainModel perGet = null;		
 		
 		try {
 			tx = session.beginTransaction();	
@@ -117,7 +117,7 @@ public class PersonDAL {
 		//PS6 - please implement		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
-		StudentDomainModel perGet = null;		
+		PersonDomainModel perGet = null;		
 		
 		try {
 			tx = session.beginTransaction();	
