@@ -24,6 +24,28 @@ public class PersonDomainModel {
     private  IntegerProperty postalCode;
     private  StringProperty city;
     private  ObjectProperty<LocalDate> birthday;
+    
+    public PersonDomainModel()
+    {
+    	super();
+    	this.setPersonID(UUID.randomUUID());
+    }
+    
+    public UUID getPersonID(){
+    	return PersonID;
+    	
+    }
+    
+    public void setPersonID(UUID personID){
+    	PersonID = personID;
+    }
+    
+	public PersonDomainModel(StringProperty firstName, StringProperty lastName)
+    {
+    	this();
+    	this.firstName = firstName;
+    	this.lastName = lastName;
+    }
 
     /**
      * Default constructor.
