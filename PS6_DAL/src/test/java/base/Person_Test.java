@@ -34,7 +34,10 @@ public class Person_Test {
 	
 	@Test
 	public void AddPersonTest(){
+		PersonDomainModel pdim = PersonDAL.getPerson(personp.getPersonID());		
 		PersonDAL.addPerson(personp);
+		pdim = PersonDAL.getPerson(personp.getPersonID());
+		assertEquals(personp, pdim);
 	}
 	
 	@Test
@@ -47,11 +50,16 @@ public class Person_Test {
 	public void UpdatePersonTest(){
 		personp.setFirstName("Lee");
 		PersonDAL.updatePerson(personp);
+		assertTrue(PersonDAL.getPerson(personp.getPersonID()).getFirstName() == "Lee");
 	}
 	
 	@Test
 	public void deletePersontest(){
 		PersonDAL.addPerson(personp);
+		PersonDAL.deletePerson(personp.getPersonID());
+		PersonDomainModel pdim = PersonDAL.getPerson(personp.getPersonID());
+		pdim = PersonDAL.getPerson(personp.getPersonID());		
+		assertEquals(null,pdim);	
 	}
 
 
@@ -59,6 +67,3 @@ public class Person_Test {
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 	}
-
-
-}
